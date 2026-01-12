@@ -40,9 +40,9 @@
 
 - For maven build `mvn clean` and  `mvn install`
 
-- To start docker container
+- To start docker container for kafka
   ```bash
-     docker compose up -d
+     docker compose up -d kafka
    ```
 
 - To stop the docker service run
