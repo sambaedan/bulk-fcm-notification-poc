@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: fcm-bulk-demo
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/fcm_demo?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: fcm-bulk-consumer
+      enable-auto-commit: false
+      auto-offset-reset: earliest
+      properties:
+        max.poll.records: 1000
+    listener:
+      type: batch
+      ack-mode: MANUAL
+
+fcm:
+  send-url: https://fcm.googleapis.com/fcm/send
+
+rate:
+  max-requests-per-second: 1000
+  burst-capacity: 2000
+
+batch:
+  size: 5000
+
+retry:
+  max-attempts: 5
+  initial-backoff-ms: 500
+  max-backoff-ms: 10000
+  jitter: true
+
+logging:
+  level:
+    org.apache.kafka: OFF
+    org.springframework.kafka: OFF
+    root: INFO
+    com.example.fcmbulk: DEBUG
+    org.hibernate.SQL: OFF
