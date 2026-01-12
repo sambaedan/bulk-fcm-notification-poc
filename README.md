@@ -1,3 +1,6 @@
+# **Project Overview"
+
+- This project is created to modernize bulk FCM (Firebase Cloud Messaging) implementation using up-to-date best practices and tools.
 
 # **Project Setup**
 
@@ -51,7 +54,7 @@
     ```bash
        docker ps
     ```
-#**Developer Note**
+# **Developer Note**
 
 - A firebase sdk is needed in resources classpath to properly intialize the firebase instance
 
